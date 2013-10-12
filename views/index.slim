@@ -1,0 +1,31 @@
+doctype html
+html ng-app="ArtistMatch"
+  head
+    title Artist Match
+    link rel="shortcut icon" href="/favicon.ico"
+    link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+    link href="/application.css" rel="stylesheet" type="text/css"
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          a.navbar-brand href="/" Artist Match
+
+    .container ng-controller="ArtistListCtrl"
+      ul
+        li.artist(ng-repeat="artist in artists")
+          h3
+            | {{ artist.name }}
+          img ng-src="{{ artist.image }}"
+
+          .badges
+            span.label.label-info
+              | {{ artist.listeners }}
+            span.label.label-primary
+              | {{ artist.playcount }}
+            span.label ng-class="{ 'label-success': artist.ontor, 'label-danger': !artist.ontor }" On tour
+
+          p ng-bind-html-unsafe="artist.bio"
+
+    script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"
+    script src="/application.js"
