@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="ArtistMatch">
+  <head>
+    <title>Artist Match</title>
+    <link href="/favicon.ico" rel="shortcut icon" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/application.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Artist Match</a>
+        </div>
+      </div>
+    </div>
+    <div class="container" ng-controller="ArtistListCtrl">
+      <ul>
+        <li class="artist" ng-repeat="artist in artists">
+          <h3>
+            {{ artist.name }}
+          </h3>
+          <img ng-src="{{ artist.image }}" />
+          <div class="badges">
+            <span class="label label-info">{{ artist.listeners }}</span>
+            <span class="label label-primary">{{ artist.playcount }}</span>
+            <span class="label" ng-class="{ 'label-success': artist.ontor, 'label-danger': !artist.ontor }">On tour</span>
+          </div>
+          <p ng-bind-html-unsafe="artist.bio"></p>
+        </li>
+      </ul>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="/application.js"></script>
+  </body>
+</html>
