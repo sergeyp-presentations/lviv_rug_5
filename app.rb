@@ -1,5 +1,5 @@
 class ArtistsApp < Sinatra::Base
-  set :pool, ArtistPool.pool(:size => 12)
+  set :pool, ArtistPool.pool(:size => 16)
 
   get '/' do
     slim :index
